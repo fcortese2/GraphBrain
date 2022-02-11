@@ -167,7 +167,7 @@ namespace Graphing
                     lineGraphPredict = false,
                     lineGraphPredictionSpace = 0,
                     liveItemAdd = true,
-                    liveItemBuffer = 6
+                    liveItemBuffer = 20
                 };
             }
         }

@@ -5,6 +5,7 @@ using UnityEditor;
 using Graphing.Editor;
 using SimpleColorPicker;
 using Graphing;
+using System.Linq;
 
 [System.Serializable]
 public class Graph: MonoBehaviour
@@ -18,7 +19,7 @@ public class Graph: MonoBehaviour
     /// <summary>
     /// DO NOT EDIT DIRECTLY!
     /// </summary>
-    public GraphValue[] graphMemoryBuffer;
+    public Queue<GraphValue> graphMemoryBuffer;
 
     /// <summary>
     /// Change this whenever you want to alter the appearance of your graph.
@@ -36,9 +37,41 @@ public class Graph: MonoBehaviour
     /// <param name="points">Points to plot</param>
     public void SetValues(GraphValue[] points, GraphStyle graphStyle)
     {
-        graphElements = points;
+        if (graphStyle.liveItemAdd == true)
+        {
+            if (graphMemoryBuffer == null)
+            {
+                graphMemoryBuffer = new Queue<GraphValue>();
+            }
+
+            graphMemoryBuffer.Enqueue(points[0]);
+            if (graphMemoryBuffer.Count > graphStyle.liveItemBuffer)
+            {
+                graphMemoryBuffer.Dequeue();
+            }
+
+
+            graphElements = graphMemoryBuffer.ToArray();
+        }
+        else
+        {
+            graphElements = points;
+        }
+
         style = graphStyle;
     }
+
+    public GraphValue[] GenerateSingleElementArray(float value, string tag)
+    {
+        GraphValue val = new GraphValue()
+        {
+            Value = value,
+            Tag = tag
+        };
+
+        return new GraphValue[] { val };
+    }
+
 }
 
 #if UNITY_EDITOR
@@ -57,7 +90,7 @@ public class BaseGraphDrawer : Editor
 
         if (graph.graphElements != null)
         {
-            if (colors == null)
+            if (colors == null || colors.Length != graph.graphElements.Length)
             {
                 colors = new Color[graph.graphElements.Length];
                 for (int i = 0; i < colors.Length; i++)

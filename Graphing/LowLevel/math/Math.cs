@@ -14,7 +14,7 @@ namespace Graphing.Editor
             {
                 vals[i] = i;
             }
-            Debug.Log($"Numbers up to {maxExclusive} exclusive are {arrayToString(vals)}");
+            //Debug.Log($"Numbers up to {maxExclusive} exclusive are {arrayToString(vals)}");
             return vals;
         }
 

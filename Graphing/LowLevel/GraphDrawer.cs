@@ -231,9 +231,9 @@ namespace Graphing.Editor
             }
             else yPixelValue = style.fitToYval / plotAreaHeight;
 
-            Debug.Log($"First known point: {points[0].Value} | Last known point: {points[points.Length - 1].Value}");
-            Debug.Log($"y={m}x+{b}");
-            Debug.Log($"Draw start: {predictionLineStartPoint} | end: {predictionLineEndPoint}");
+            //Debug.Log($"First known point: {points[0].Value} | Last known point: {points[points.Length - 1].Value}");
+            //Debug.Log($"y={m}x+{b}");
+            //Debug.Log($"Draw start: {predictionLineStartPoint} | end: {predictionLineEndPoint}");
             DrawPredictionLineToScale(predictionLineStartPoint, predictionLineEndPoint, xPixelValue, yPixelValue, graphRect, style);
 
             //Convert all known points to local coords

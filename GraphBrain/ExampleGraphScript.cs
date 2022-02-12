@@ -15,8 +15,8 @@ public class ExampleGraphScript : MonoBehaviour
 
     private void Start()
     {
-        GraphIt.CreateGraph(gameObject, out graph, "Normal Graph");
-        GraphIt.CreateGraph(gameObject, out liveGraph, "Live Graph");
+        GraphBrain.CreateGraph(gameObject, out graph, "Normal Graph");
+        GraphBrain.CreateGraph(gameObject, out liveGraph, "Live Graph");
 
 
         values = new float[10];
@@ -34,7 +34,7 @@ public class ExampleGraphScript : MonoBehaviour
 
     private void Update()
     {
-        graph.SetValues(GraphIt.FormatData(values, labels), GraphStyle.DefaultPredict);
+        graph.SetValues(GraphBrain.FormatData(values, labels), GraphStyle.DefaultPredict);
     }
 
     IEnumerator randomize()

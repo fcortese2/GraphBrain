@@ -5,7 +5,7 @@ using Graphing.Editor;
 
 namespace Graphing
 {
-    public class GraphIt
+    public class GraphBrain
     {
         public static void CreateGraph(GameObject pointToObject, out Graph graph, string title = "Graph")
         {

@@ -37,6 +37,8 @@ public class Graph: MonoBehaviour
     /// <param name="points">Points to plot</param>
     public void SetValues(GraphValue[] points, GraphStyle graphStyle)
     {
+    #if UNITY_EDITOR
+
         if (graphStyle.liveItemAdd == true)
         {
             if (graphMemoryBuffer == null)
@@ -59,6 +61,8 @@ public class Graph: MonoBehaviour
         }
 
         style = graphStyle;
+
+    #endif
     }
 
     public GraphValue[] GenerateSingleElementArray(float value, string tag)

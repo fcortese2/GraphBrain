@@ -6,9 +6,10 @@ using System;
 
 namespace Graphing.Editor
 {
+#if UNITY_EDITOR
+
     public class GraphDrawer
     {
-        private static float BUTTON_HEIGHT = 50f;
 
         public static void DrawGraph(GraphValue[] points, Color[] barColors, GraphStyle style, ref bool hasToDrawBarGraph, string graphName)
         {
@@ -372,6 +373,8 @@ namespace Graphing.Editor
             return vals;
         }
     }
+
+#endif
 
     [System.Serializable]
     public struct GraphValue

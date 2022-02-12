@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Graphing;
 
-public class ExampleBoi : MonoBehaviour
+public class ExampleGraphScript : MonoBehaviour
 {
     float[] values = new float[200];
     string[] labels = new string[200];
